@@ -26,9 +26,3 @@ final List<Post> posts = [
   ),
   Post(name: "Jon Bellion", datePosted: '7 Weeks Ago', image: 'assets/idk.jpg'),
 ];
-
-Post mapPosts() {
-  final Post post = posts.map((post) => post) as Post;
-
-  return post;
-}

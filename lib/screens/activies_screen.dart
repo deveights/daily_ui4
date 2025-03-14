@@ -5,15 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hugeicons/hugeicons.dart';
 
-class ActiviesScreen extends StatelessWidget {
-  ActiviesScreen({super.key});
+class ActiviesScreen extends StatefulWidget {
+  const ActiviesScreen({super.key});
 
+  @override
+  State<ActiviesScreen> createState() => _ActiviesScreenState();
+}
+
+class _ActiviesScreenState extends State<ActiviesScreen> {
   final List<String> activityOptions = [
     'Posts',
     'Tagged',
     'Liked',
     'Interested',
   ];
+
+  String activeButton = 'Posts';
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +84,13 @@ class ActiviesScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 12.sp),
-                  Image.asset(post.image),
+                  Container(
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Image.asset(post.image),
+                  ),
                   SizedBox(height: 16.sp),
                 ],
               ),
@@ -93,20 +106,31 @@ class ActiviesScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         ...activityOptions.map(
-          (option) => Container(
-            padding: EdgeInsets.symmetric(vertical: 4.sp, horizontal: 14.sp),
-            height: 28.sp,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color.fromARGB(255, 255, 180, 180),
-                width: 2,
+          (option) => InkWell(
+            onTap: () {
+              setState(() {
+                activeButton = option;
+              });
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 4.sp, horizontal: 14.sp),
+              height: 28.sp,
+              decoration: BoxDecoration(
+                color: activeButton != option ? Colors.white : primaryColor,
+                border: Border.all(
+                  color: const Color.fromARGB(255, 255, 180, 180),
+                  width: 1.5,
+                ),
+                borderRadius: BorderRadius.circular(4.sp),
               ),
-              borderRadius: BorderRadius.circular(4.sp),
-            ),
-            child: FittedBox(
-              child: Text(
-                option,
-                style: TextStyle(fontWeight: FontWeight.bold),
+              child: FittedBox(
+                child: Text(
+                  option,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: activeButton != option ? Colors.black : Colors.white,
+                  ),
+                ),
               ),
             ),
           ),

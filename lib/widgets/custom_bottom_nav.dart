@@ -1,4 +1,3 @@
-import 'package:daily_ui4/constants/my_themes.dart';
 import 'package:daily_ui4/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';

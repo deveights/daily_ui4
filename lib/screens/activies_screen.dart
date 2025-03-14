@@ -69,14 +69,15 @@ class _ActiviesScreenState extends State<ActiviesScreen> {
                         ],
                       ),
                       Spacer(),
-                      IconButton(
-                        onPressed: () {
+                      InkWell(
+                        borderRadius: BorderRadius.circular(4.sp),
+                        onTap: () {
                           DropdownMenu(
                             dropdownMenuEntries: [],
                             initialSelection: ValueKey('Edit'),
                           );
                         },
-                        icon: HugeIcon(
+                        child: HugeIcon(
                           icon: HugeIcons.strokeRoundedMoreHorizontalCircle01,
                           color: primaryColor,
                         ),

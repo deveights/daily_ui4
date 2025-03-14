@@ -69,14 +69,9 @@ class _ActiviesScreenState extends State<ActiviesScreen> {
                         ],
                       ),
                       Spacer(),
-                      InkWell(
-                        borderRadius: BorderRadius.circular(4.sp),
-                        onTap: () {
-                          DropdownMenu(
-                            dropdownMenuEntries: [],
-                            initialSelection: ValueKey('Edit'),
-                          );
-                        },
+                      PopupMenuButton(
+                        itemBuilder:
+                            (context) => [PopupMenuItem(child: Text('Edit'))],
                         child: HugeIcon(
                           icon: HugeIcons.strokeRoundedMoreHorizontalCircle01,
                           color: primaryColor,

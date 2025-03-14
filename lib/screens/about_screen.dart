@@ -23,14 +23,8 @@ class AboutScreen extends StatelessWidget {
                 'About',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.sp),
               ),
-              InkWell(
-                borderRadius: BorderRadius.circular(4.sp),
-                onTap: () {
-                  DropdownMenu(
-                    dropdownMenuEntries: [],
-                    initialSelection: ValueKey('Edit'),
-                  );
-                },
+              PopupMenuButton(
+                itemBuilder: (context) => [PopupMenuItem(child: Text('Edit'))],
                 child: HugeIcon(
                   icon: HugeIcons.strokeRoundedMoreHorizontalCircle01,
                   color: primaryColor,
@@ -51,14 +45,8 @@ class AboutScreen extends StatelessWidget {
                 'Skills',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.sp),
               ),
-              InkWell(
-                borderRadius: BorderRadius.circular(4.sp),
-                onTap: () {
-                  DropdownMenu(
-                    dropdownMenuEntries: [],
-                    initialSelection: ValueKey('Edit'),
-                  );
-                },
+              PopupMenuButton(
+                itemBuilder: (context) => [PopupMenuItem(child: Text('Edit'))],
                 child: HugeIcon(
                   icon: HugeIcons.strokeRoundedMoreHorizontalCircle01,
                   color: primaryColor,
@@ -71,6 +59,8 @@ class AboutScreen extends StatelessWidget {
             child: GridView(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
+                mainAxisSpacing: 4.sp,
+                crossAxisSpacing: 4.sp,
               ),
               children: [
                 ...user.skills.map(
@@ -79,7 +69,7 @@ class AboutScreen extends StatelessWidget {
                       color: const Color.fromARGB(229, 255, 232, 231),
                       borderRadius: BorderRadius.circular(8.sp),
                     ),
-                    margin: EdgeInsets.all(4.sp),
+                    // margin: EdgeInsets.all(4.sp),
                     padding: EdgeInsets.all(8.sp),
                     child: Center(
                       child: FittedBox(
@@ -102,7 +92,6 @@ class AboutScreen extends StatelessWidget {
                     color: const Color.fromARGB(229, 255, 232, 231),
                     borderRadius: BorderRadius.circular(8.sp),
                   ),
-                  margin: EdgeInsets.all(4.sp),
                   child: InkWell(
                     borderRadius: BorderRadius.circular(8.sp),
                     onTap: () {},
